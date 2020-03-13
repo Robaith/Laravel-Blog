@@ -27,9 +27,16 @@
             <div class="box-header with-border">
               <h3 class="box-title">Titles</h3>
             </div>
+            
+            @include('includes.field_empty_error')
+                    
+                
+             
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <form role="form" action="{{ route('post.store') }}" method="post">
+              {{ csrf_field() }}
+
               <div class="box-body">
 
               	<div class="col-lg-6">
@@ -83,9 +90,11 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body pad">
-              <form>
-                <textarea class="textarea" placeholder="Place some text here" name="body" style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-              </form>
+              
+                <textarea class="textarea" placeholder="Place some text here" name="body" style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                  
+                </textarea>
+              
             </div>
           </div>
 

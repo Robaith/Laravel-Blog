@@ -27,9 +27,11 @@
             <div class="box-header with-border">
               <h3 class="box-title">Titles</h3>
             </div>
+            @include('includes.field_empty_error')
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <form role="form" action="{{ route('tag.store') }}" method="post">
+              {{ csrf_field() }}
               <div class="box-body">
 
               	<div class="col-lg-offset-3 col-lg-6">
@@ -51,6 +53,7 @@
 
                
                 </div>
+              }
 
             </form>
         	</div>
