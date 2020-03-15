@@ -69,8 +69,29 @@
                     <td>{{ $post->subtitle }}</td>
                     <td>{{ $post->slug }}</td>
                     <td>{{ $post->created_at }}</td>
-                    <td>Edit</td>
-                    <td>Delete</td>
+                    <td><a href="{{ route('post.edit', $post->id) }}"><i class="fa fa-fw fa-edit"></i></a></td>
+
+
+                    <td>
+                      <form id="delete-form-{{ $post->id }}" method="post" action="{{ route('post.destroy',   $post->id) }}" style="display: none;">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                      </form>
+
+                      <a href="" onclick="
+
+                        if(confirm('Are you sure you want to delete this?'))
+                        {
+                          event.preventDefault();document.getElementById('delete-form-{{ $post->id }}').submit();
+                        }
+
+                        else
+                        {
+                          event.preventDefault();
+                        }">
+                        <i class="fa fa-fw fa-trash"></i></a>
+                    </td>
+                      
                   </tr>
                 @endforeach
                 
@@ -79,7 +100,7 @@
                 <tr>
                   <th>S.No</th>
                   <th>Title</th>
-                  <th>Subtitle</th>
+                  <th>Subtitle</th>                                                                                                
                   <th>Slug</th>
                   <th>Created At</th>
                   <th>Edit</th>
