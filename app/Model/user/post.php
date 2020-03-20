@@ -19,5 +19,9 @@ class post extends Model
     
     }
 
+    public function getRouteKeyName()
+    {
+    	return 'slug' ;
+    }
 
 }
