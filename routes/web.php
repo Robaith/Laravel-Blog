@@ -40,7 +40,7 @@ Route::group(['namespace' => 'Admin'], function(){
 
 	//Admin Auth Routes
 	Route::get('admin-login', 'Auth\LoginController@showLoginForm')->name('admin.login');
-	Route::post('login', 'Auth\LoginController@login');
+	Route::post('admin-login', 'Auth\LoginController@login');
 
 
 });
