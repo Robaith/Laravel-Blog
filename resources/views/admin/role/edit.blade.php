@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-	<!-- Content Wrapper. Contains page content -->
+  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -25,45 +25,40 @@
             <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Titles</h3>
+              <h3 class="box-title">Edit Role</h3>
             </div>
             @include('includes.field_empty_error')
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="{{ route('tag.update', $tag->id) }}" method="post">
+            <form role="form" action="{{ route('role.update', $role->id) }}" method="post">
               {{ csrf_field() }}
               {{ method_field('PUT') }}
               <div class="box-body">
 
-              	<div class="col-lg-offset-3 col-lg-6">
-              		<div class="form-group">
-                  <label for="name">Tag Title</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Tag-Title" value="{{ $tag->name }}">
-                	</div>
+                <div class="col-lg-offset-3 col-lg-6">
+                  <div class="form-group">
+                  <label for="name">Role name</label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="role name" value="{{$role->name}}">
+                  </div>
 
                 
 
-                	<div class="form-group">
-                  <label for="slug">Post Slug</label>
-                  <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="{{ $tag->slug }}">
-                	</div>
-
-                	<div class="form-group">
-                	<button type="submit" class="btn btn-primary">Submit</button>
-                  <a href="{{ route('tag.index') }}" type="button" class="btn btn-warning">Back</a>
-              		</div>
+                  <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <a href="{{ route('role.index') }}" type="button" class="btn btn-warning">Back</a>
+                  </div>
 
                
                 </div>
               }
 
             </form>
-        	</div>
-            		
+          </div>
+                
           
       </div>
 
-      				
+              
           
       <!-- ./row -->
     </section>
