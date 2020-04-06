@@ -52,7 +52,7 @@
                 <tr>
                   <th>S.No</th>
                   <th>permission Name</th>
-                  
+                  <th>permission For</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>
@@ -64,6 +64,7 @@
 
                     <td>{{ $loop->index + 1 }}</td>
                     <td>{{ $permission->name }}</td>
+                    <td>{{ $permission->for }}</td>
                     <td><a href="{{ route('permission.edit', $permission->id) }}"><i class="fa fa-fw fa-edit"></i></a></td>
 
 
@@ -94,7 +95,7 @@
                 <tr>
                   <th>S.No</th>
                   <th>permission Name</th>
-                  
+                  <th>permission For</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Model\admin\role;
+use App\Model\admin\Perm;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -26,7 +27,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view ('admin/role/create');
+        $permissions = Perm::all();
+        return view ('admin/role/create',compact('permissions'));
     }
 
     /**

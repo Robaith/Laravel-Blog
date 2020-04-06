@@ -40,7 +40,15 @@
                   <input type="text" class="form-control" id="name" name="name" placeholder="permission name">
                 	</div>
 
-                
+                  <div class="form-group">
+                    <label for="for">Permission For</label>
+                    <select name="for" id="for" class="form-control">
+                      <option selected disable>Select Permission For</option>
+                      <option value="user">user</option>
+                      <option value="post">post</option>
+                      <option value="other">other</option>
+                    </select>
+                  </div>      
 
                 	<div class="form-group">
                 	<button type="submit" class="btn btn-primary">Submit</button>

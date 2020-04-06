@@ -39,11 +39,13 @@ class PermController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required|max:50|unique:perms'
+            'name' => 'required|max:50|unique:perms',
+            'for' => 'required'
         ]);
 
         $permissions= new Perm();
         $permissions->name = $request->name;
+        $permissions->for = $request->for;
         $permissions->save();
 
         return redirect(route('permission.index'));
@@ -82,11 +84,13 @@ class PermController extends Controller
     public function update(Request $request, Perm $permission)
     {
         $this->validate($request,[
-            'name' => 'required|max:50'
+            'name' => 'required|max:50',
+            'name' => 'required'
         ]);
 
         $permission= Perm::find($permission->id);
         $permission->name = $request->name;
+        $permissions->for = $request->for;
         $permission->save();
 
         return redirect(route('permission.index'));
