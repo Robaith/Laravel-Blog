@@ -70,7 +70,8 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = role::find($id);
-        return view('admin/role/edit', compact('role'));
+        $permissions = Perm::all();
+        return view('admin/role/edit', compact('role','permissions'));
     }
 
     /**
@@ -82,6 +83,8 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
+
         $this->validate($request, [
             'name' => 'required|max:50'
             
@@ -89,7 +92,7 @@ class RoleController extends Controller
 
         $role = role::find($id);
         $role->name = $request->name;
-
+        $role->permissions()->sync($request->permission);
         $role->save();
 
         return redirect(route('role.index'));
