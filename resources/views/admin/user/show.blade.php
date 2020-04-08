@@ -51,8 +51,7 @@
                 <thead>
                 <tr>
                   <th>S.No</th>
-                  <th>Tag Name</th>
-                  <th>Slug</th>
+                  <th>User Name</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>
@@ -94,8 +93,7 @@
                 <tfoot>
                 <tr>
                   <th>S.No</th>
-                  <th>Tag Name</th>
-                  <th>Slug</th>
+                  <th>User Name</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>

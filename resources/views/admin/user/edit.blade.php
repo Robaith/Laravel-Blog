@@ -25,41 +25,33 @@
             <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Add Admin</h3>
+              <h3 class="box-title">Edit Admin</h3>
             </div>
             @include('includes.field_empty_error')
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="{{ route('user.store') }}" method="post">
+            <form role="form" action="{{ route('user.update', $user->id) }}" method="post">
               {{ csrf_field() }}
+              {{ method_field('PUT') }}
               <div class="box-body">
 
                 <div class="col-lg-offset-3 col-lg-6">
                   <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="name" value="{{ old('name') }}">
+                  <input type="text" class="form-control" id="name" name="name" placeholder="name" value="{{ $user->name }}">
                   </div>
 
                 
                   <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="email" value="{{ old('email') }}">
+                  <input type="text" class="form-control" id="email" name="email" placeholder="email" value="{{ $user->email }}">
                   </div>
 
                   <div class="form-group">
                   <label for="phone">Phone</label>
-                  <input type="text" class="form-control" id="phone" name="phone" placeholder="phone" value="{{ old('phone') }}">
+                  <input type="text" class="form-control" id="phone" name="phone" placeholder="phone" value="{{ $user->phone }}">
                   </div>
 
-                  <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control" id="password" name="password" placeholder="password" value="{{ old('password') }}">
-                  </div>
-
-                  <div class="form-group">
-                  <label for="password_confirmation">Confirm Password</label>
-                  <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="confirm password">
-                  </div>
 
                   <div class="form-group">
                     <div class="checkbox">

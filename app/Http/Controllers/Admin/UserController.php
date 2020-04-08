@@ -49,7 +49,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        $this->validate($request,[
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:admins',
+            'phone' => 'required|numeric',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $request['password'] = bcrypt($request->password);
+        $user = admin::create($request->all());
+        $user->role()->sync($request->role);
+        return redirect(route('user.index'));
     }
 
     /**
@@ -71,7 +81,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = admin::find($id);
+        $roles = role::all();
+        return view('admin/user/edit', compact('user', 'roles'));
     }
 
     /**
@@ -83,7 +95,15 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'phone' => 'required|numeric'
+            
+        ]);
+
+        $user = admin::where('id', $id)->update($request->except('_token', '_method'));
+        return redirect(route('user.index'));
     }
 
     /**
@@ -94,6 +114,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        admin::where('id', $id)->delete();
+        return redirect()->back();
     }
 }
