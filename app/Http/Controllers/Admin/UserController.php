@@ -58,7 +58,7 @@ class UserController extends Controller
 
         $request['password'] = bcrypt($request->password);
         $user = admin::create($request->all());
-        $user->role()->sync($request->role);
+        $user->roles()->sync($request->role);
         return redirect(route('user.index'));
     }
 
@@ -102,7 +102,8 @@ class UserController extends Controller
             
         ]);
 
-        $user = admin::where('id', $id)->update($request->except('_token', '_method'));
+        $user = admin::where('id', $id)->update($request->except('_token', '_method','role'));
+        admin::find($id)->roles()->sync($request->role);
         return redirect(route('user.index'));
     }
 

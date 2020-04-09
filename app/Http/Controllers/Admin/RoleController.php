@@ -10,6 +10,22 @@ use App\Http\Controllers\Controller;
 class RoleController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -46,7 +62,7 @@ class RoleController extends Controller
         $role = new role();
         $role->name = $request->name;
         $role->save();
-
+        $role->permissions()->sync($request->permission);
         return redirect(route('role.index'));
     }
 

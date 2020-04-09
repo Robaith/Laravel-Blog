@@ -12,10 +12,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Blank page
-        <small>it all starts here</small>
-      </h1>
+      @include('admin/layouts/pagehead')
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Examples</a></li>
@@ -52,6 +49,7 @@
                 <tr>
                   <th>S.No</th>
                   <th>User Name</th>
+                  <th>Assigned Roles</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>
@@ -63,6 +61,11 @@
 
                     <td>{{ $loop->index + 1 }}</td>
                     <td>{{ $user->name }}</td>
+                    <td>
+                      @foreach($user->roles as $role)
+                        {{ $role->name }},
+                      @endforeach
+                    </td>
                     
                     <td><a href="{{ route('user.edit', $user->id) }}"><i class="fa fa-fw fa-edit"></i></a></td>
 
@@ -94,6 +97,7 @@
                 <tr>
                   <th>S.No</th>
                   <th>User Name</th>
+                  <th>Assigned Roles</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>
