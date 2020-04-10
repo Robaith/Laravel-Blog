@@ -102,6 +102,8 @@ class UserController extends Controller
             
         ]);
 
+        $request->status ? : $request['status'] = 0;
+
         $user = admin::where('id', $id)->update($request->except('_token', '_method','role'));
         admin::find($id)->roles()->sync($request->role);
         return redirect(route('user.index'));

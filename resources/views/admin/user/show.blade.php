@@ -50,6 +50,7 @@
                   <th>S.No</th>
                   <th>User Name</th>
                   <th>Assigned Roles</th>
+                  <th>Status</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>
@@ -66,6 +67,8 @@
                         {{ $role->name }},
                       @endforeach
                     </td>
+
+                    <td>{{ $user->status? 'Active' : 'Not Active' }}</td>
                     
                     <td><a href="{{ route('user.edit', $user->id) }}"><i class="fa fa-fw fa-edit"></i></a></td>
 
@@ -98,6 +101,7 @@
                   <th>S.No</th>
                   <th>User Name</th>
                   <th>Assigned Roles</th>
+                  <th>Status</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>
